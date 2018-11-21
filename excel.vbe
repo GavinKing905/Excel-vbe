@@ -1,0 +1,13 @@
+Option Explicit
+Sub UnMergeValue()
+    Dim s As String, i As Long, cnt As Integer
+    For i = 2 To Range("B65536").End(xlUp).Row
+        s = Cells(i, 2).Value
+        cnt = Cells(i, 2).MergeArea.Count
+        Cells(i, 2).UnMerge
+        Range(Cells(i, 2), Cells(i + cnt - 1, 2)).Value = s
+        i = i + cnt - 1
+    Next
+End Sub
+
+t_UnMergeValue
